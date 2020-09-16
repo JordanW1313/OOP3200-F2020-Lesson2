@@ -66,6 +66,8 @@ int main()
 	int inputY; // temporary input variable for y
 	// to store the distance between two points
 
+	double myDouble = ConsoleInput::ReadDouble();
+
 	try
 	{
 		// Input
@@ -100,6 +102,7 @@ int main()
 
 	// done.
 	cout << endl << endl;
+	cin;
 	return 0;
 } // end of main()
 
