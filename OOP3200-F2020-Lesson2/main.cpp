@@ -77,12 +77,18 @@ int main()
 {
 	// Declarations
 	// a point called 'origin', initialized to 0, 0
-	// a point called 'destination'
+	CartesianPoint origin = CartesianPoint(0, 0);
+
+		// a point called 'destination'
+		CartesianPoint destination;
+
 	int inputX; // temporary input variable for x
 	int inputY; // temporary input variable for y
-	// to store the distance between two points
 
-	double myDouble = ConsoleInput::ReadDouble();
+	// to store the distance between two points
+	double distance;
+
+	//double myDouble = ConsoleInput::ReadDouble();
 
 	try
 	{
@@ -92,21 +98,29 @@ int main()
 		cout << "\nEnter coordinates of the destination point: " << endl;
 		// prompt for, read, and store x coordinate:
 		cout << "X: ";
+		inputX = ConsoleInput::ReadInteger();
+		destination.SetX(inputX);
 
 
 
 		// prompt for, read, and store y coordinate:
 		cout << "Y: ";
+		inputY = ConsoleInput::ReadInteger();
+		destination.SetY(inputY);
 
 
 
 		// Processing
 		// determine the distance between the two points
+		distance = origin.GetDistanceTo(destination);
 
 
 		// Output 
 		// Show the points and the distance
 		cout << fixed << setprecision(3); // formatting
+		cout << "\nThe Distance between " << origin.ToString()
+			<< "and " << destination.ToString() << " is "
+			<< distance;
 
 
 	}
@@ -161,13 +175,13 @@ int CartesianPoint::GetY()
 *	@return	the distance as a double
 */
 
-double CartesianPoint::GetDistanceTo(CartesianPoint pointTo) const;
+double CartesianPoint::GetDistanceTo(CartesianPoint pointTo) const
 {
 	// difference between x values
 	int xDelta = pointTo.myX - myX;
 
 	// difference between y values
-	int xDelta = pointTo.myY - myY;
+	int yDelta = pointTo.myY - myY;
 
 	// return the formula (based on Pythagorean theorem)
 	return sqrt((xDelta * xDelta) + (yDelta * yDelta));
@@ -179,7 +193,7 @@ double CartesianPoint::GetDistanceTo(CartesianPoint pointTo) const;
 *	@return	the obj state as a string
 */
 
-string CartesianPoint::ToString() const;
+string CartesianPoint::ToString() const
 {
 	// declare a stringstream object
 	stringstream strOut;
